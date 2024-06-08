@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { MyModal } from "./MyModal"
 import { STRIP_COST, koeffsArr } from "./data"
-import { percent } from "./utils/percent"
 
 export const App = () => {
   const [plotLength, setPlotLength] = useState(0)
-  // const [stripCost, setStripCost] = useState(0)
   const [stripCount, setStripCount] = useState(0)
 
   const [isActive, setIsActive] = useState(false)
@@ -21,16 +19,23 @@ export const App = () => {
   const submitHandler = e => {
     e.preventDefault()
 
-    let result = plotLength * stripCount
+    let result = plotLength * stripCount * STRIP_COST
+
+    const layersK6 = koeffs["layer"]
+
+    let otherKoeffs = 0
 
     koeffsArr.forEach(k => {
-      const number = koeffs[k.id]
-      result = percent(result, number)
+      if (k.id === "layer") {
+      } else {
+        otherKoeffs += koeffs[k.id] / 100
+      }
     })
 
-    console.log("result", result)
+    console.log("otherKoeffs", otherKoeffs)
+    console.log("layersK6", layersK6)
 
-    setResult(result)
+    setResult(result * (1 - layersK6) * (1 - otherKoeffs))
   }
 
   const resetHandler = () => {
@@ -58,11 +63,11 @@ export const App = () => {
         <label>Стоимость полосы: {STRIP_COST}</label>
         <button>Посчитать</button>
       </form>
-      {result && <h1>Результат: {result}</h1>}
+      {result && <h1>Результат: {result} миллионов</h1>}
 
       <MyModal setK={setKoeffs} kData={koeffs} isActive={isActive} setIsActive={setIsActive} />
 
-      <button onClick={resetHandler}>Сбросить все</button>
+      <button onClick={resetHandler}>Сбросить все пока не работает кнопка</button>
     </div>
   )
 }
