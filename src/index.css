@@ -27,3 +27,34 @@ form {
   justify-content: center;
   gap: 30px;
 }
+
+.modal-wrapper {
+  position: fixed;
+  /* position: relative; */
+  z-index: 100;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: #000; */
+  background-color: red;
+  /* opacity: 0; */
+  pointer-events: none;
+}
+
+.modal-container {
+  position: relative;
+  width: 800px;
+  /* width: auto; */
+  width: max-content;
+  /* background-color: blue; */
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+  gap: 40px;
+}
