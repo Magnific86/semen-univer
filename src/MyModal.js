@@ -7,20 +7,10 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
 
   useOnClickOutside(modalRef, () => setIsActive(false))
 
-  console.log("kData", kData)
-
   return (
     <>
       <button onClick={() => setIsActive(true)}>Редактировать коэффициенты</button>
-      {/* <div className="modal-wrapper" ref={modalRef}> */}
       <div ref={modalRef}>
-        {/* <div
-          className="modal-wrapper"
-          onClick={e => {
-            setIsActive(false)
-            console.log("wraapeer тыккк")
-          }}
-        > */}
         {isActive && (
           <div
             className="modal-container"
@@ -32,7 +22,7 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
             {koeffsArr.map(k => (
               <label key={k.id}>
                 {k.label}
-                <input type="text" value={kData[k.id]} onChange={e => setK(e.target.value)} />
+                <input type="number" value={kData[k.id]} onChange={e => setK({ ...kData, [k.id]: e.target.value })} />
               </label>
             ))}
             <button

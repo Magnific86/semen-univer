@@ -27,6 +27,8 @@ export const koeffsArr = [
   {
     label: "Капитальность конструкции дорожной одежды оказывает определяющее влияние на стоимость строительства",
     id: "Капитальность",
-    defaultValue: 1,
+    defaultValue: 47,
   },
 ]
+
+export const STRIP_COST = 27082000

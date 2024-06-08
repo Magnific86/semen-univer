@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { MyModal } from "./MyModal"
-import { koeffsArr } from "./data"
+import { STRIP_COST, koeffsArr } from "./data"
+import { percent } from "./utils/percent"
 
 export const App = () => {
   const [plotLength, setPlotLength] = useState(0)
-  const [stripCost, setStripCost] = useState(0)
+  // const [stripCost, setStripCost] = useState(0)
   const [stripCount, setStripCount] = useState(0)
 
   const [isActive, setIsActive] = useState(false)
@@ -20,18 +21,20 @@ export const App = () => {
   const submitHandler = e => {
     e.preventDefault()
 
-    let result = plotLength * stripCost * stripCount
+    let result = plotLength * stripCount
 
     koeffsArr.forEach(k => {
-      result *= koeffs[k.id]
+      const number = koeffs[k.id]
+      result = percent(result, number)
     })
+
+    console.log("result", result)
 
     setResult(result)
   }
 
   const resetHandler = () => {
     setPlotLength(0)
-    setStripCost(0)
     setStripCount(0)
     setKoeffs({})
   }
@@ -41,17 +44,18 @@ export const App = () => {
       <form onSubmit={e => submitHandler(e)}>
         <label>
           Длина участка
-          <input type="text" value={plotLength} onChange={e => setPlotLength(e.target.value)} />
+          <input type="number" value={plotLength} onChange={e => setPlotLength(e.target.value)} />
         </label>
-        <label>
+        {/* <label>
           Стоимость полосы
-          <input type="text" value={stripCost} onChange={e => setStripCost(e.target.value)} />
-        </label>
+          <input type="number" value={stripCost} onChange={e => setStripCost(e.target.value)} />
+        </label> */}
+
         <label>
           Кол-во полос
-          <input type="text" value={stripCount} onChange={e => setStripCount(e.target.value)} />
+          <input type="number" value={stripCount} onChange={e => setStripCount(e.target.value)} />
         </label>
-
+        <label>Стоимость полосы: {STRIP_COST}</label>
         <button>Посчитать</button>
       </form>
       {result && <h1>Результат: {result}</h1>}
