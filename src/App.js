@@ -24,7 +24,7 @@ export const App = () => {
 
     console.log("layersK6", layersK6)
 
-    if (layersK6 === null) {
+    if (layersK6 === undefined) {
       alert("Введите кол-во слоев")
       return
     }

@@ -29,7 +29,7 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
           <div ref={modalRef} className="modal-container" onClick={e => e.stopPropagation()}>
             {koeffsArr.map(k => (
               <div key={k.id}>
-                <label>
+                <label className="label-container">
                   Учитывать
                   <input
                     type="checkbox"
