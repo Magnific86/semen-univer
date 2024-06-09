@@ -6,7 +6,7 @@
 
 body {
   color: #fff;
-  background-color: #000;
+  background-color: #2b2828;
 }
 
 .wrapper {
@@ -28,17 +28,32 @@ form {
   gap: 30px;
 }
 
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  margin: 0 auto;
+  height: 100vh;
+}
+
 .modal-container {
-  position: relative;
-  width: 800px;
-  /* width: auto; */
-  width: max-content;
-  /* background-color: blue; */
-  background-color: lightblue;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  position: absolute;
+  width: 1000px;
+  background-color: rgb(149, 178, 187);
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   flex-direction: column;
   gap: 40px;
+  border-radius: 40px;
+  padding: 80px;
 }
