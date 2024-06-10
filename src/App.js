@@ -10,7 +10,7 @@ export const App = () => {
   const [result, setResult] = useState(0)
 
   const resetKoeffsToDefault = () => {
-    koeffsArr.forEach(k => setKoeffs(prev => ({ ...prev, [k.id]: k.defaultValue })))
+    koeffsArr.forEach(k => setKoeffs(prev => ({ ...prev, [k.id]: { value: k.defaultValue, active: true } })))
   }
 
   useEffect(() => {
@@ -22,8 +22,6 @@ export const App = () => {
 
     const layersK6 = koeffs["layer"]
 
-    console.log("layersK6", layersK6)
-
     if (layersK6 === undefined) {
       alert("Введите кол-во слоев")
       return
@@ -34,8 +32,8 @@ export const App = () => {
     let otherKoeffs = 0
 
     koeffsArr.forEach(k => {
-      if (k.id !== "layer" && !!koeffs[k.id]) {
-        otherKoeffs += koeffs[k.id] / 100
+      if (k.id !== "layer" && koeffs[k.id].active) {
+        otherKoeffs += koeffs[k.id].value / 100
       }
     })
 
@@ -64,7 +62,7 @@ export const App = () => {
           Кол-во полос
           <input type="number" value={stripCount} onChange={e => setStripCount(e.target.value)} />
         </label>
-        <label>Стоимость полосы: {STRIP_COST} (для упрощения пока 1 поставил, чтобы такие большие суммы не были потом верну)</label>
+        <label>Стоимость полосы: {STRIP_COST}</label>
         <button>Посчитать</button>
       </form>
       {result && <h1>Результат: {result} миллионов</h1>}

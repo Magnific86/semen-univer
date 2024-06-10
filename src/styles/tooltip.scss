@@ -1,0 +1,29 @@
+@import "./variables.scss";
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  right: 0px;
+  background: #fff;
+  color: $purple;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 11;
+}
+
+.tooltip:before {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  top: -3px;
+  left: 7px;
+  z-index: 10;
+  background: #fff;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
+}

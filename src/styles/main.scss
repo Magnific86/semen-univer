@@ -1,0 +1,26 @@
+@import "./variables.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  background: $main-bg;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 70px;
+
+  flex-direction: column;
+}
+
+.my-h {
+  font-size: 20px;
+}
