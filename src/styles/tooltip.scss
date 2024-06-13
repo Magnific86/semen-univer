@@ -2,6 +2,8 @@
 
 .tooltip-container {
   position: relative;
+  // display: flex;
+  // gap: 6px;
 }
 
 .tooltip {
@@ -26,4 +28,18 @@
   border-radius: 1px;
   transform: rotate(45deg);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
+}
+
+.tooltip-label {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 6px;
+
+  span {
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
 }

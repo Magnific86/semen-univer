@@ -20,6 +20,11 @@ export const App = () => {
   const submitHandler = e => {
     e.preventDefault()
 
+    if (!plotLength || !stripCount) {
+      alert("Значения должны быть больше нуля")
+      return
+    }
+
     const layersK6 = koeffs["layer"]
 
     if (layersK6 === undefined) {
@@ -37,10 +42,6 @@ export const App = () => {
       }
     })
 
-    console.log("result", result)
-    console.log("1 - layersK6", 1 - layersK6)
-    console.log("1 - otherKoeffs", 1 - otherKoeffs)
-
     setResult(result * (1 - layersK6) * (1 - otherKoeffs))
   }
 
@@ -55,17 +56,19 @@ export const App = () => {
     <div className="wrapper">
       <form onSubmit={e => submitHandler(e)}>
         <label>
-          Длина участка
+          Длина участка:
           <input type="number" value={plotLength} onChange={e => setPlotLength(e.target.value)} />
         </label>
         <label>
-          Кол-во полос
+          Кол-во полос:
           <input type="number" value={stripCount} onChange={e => setStripCount(e.target.value)} />
         </label>
-        <label>Стоимость полосы: {STRIP_COST}</label>
+        <label>
+          <h1 className="my-h">Стоимость полосы: {STRIP_COST}</h1>
+        </label>
         <button>Посчитать</button>
       </form>
-      {result && <h1>Результат: {result} миллионов</h1>}
+      {result ? <h1>Результат: {result} миллионов</h1> : null}
       <MyModal setK={setKoeffs} kData={koeffs} isActive={isActive} setIsActive={setIsActive} />
       <button onClick={resetHandler}>Сбросить все</button>
     </div>

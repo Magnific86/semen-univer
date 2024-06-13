@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { koeffsArr, layersArr, layersData } from "./data"
+import { kefDesc6, koeffsArr, layersArr, layersData } from "./data"
 import useOnClickOutside from "./utils/useClickOutside"
 import { QuestionIcon } from "./utils/QuestionIcon"
 
@@ -24,14 +24,12 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
     return () => setActiveLayer(null)
   }, [])
 
-  // console.log('kData', kData)
-
   return (
     <>
       <button onClick={() => setIsActive(true)}>Редактировать коэффициенты</button>
       {isActive && (
         <div className="modal-wrapper">
-          {/* <p className="my-h">Редактирование коэффициентов</p> */}
+          <p className="my-h">Редактирование коэффициентов</p>
           <div ref={modalRef} className="modal-container" onClick={e => e.stopPropagation()}>
             {koeffsArr.map(k => (
               <div className="koeff-container" key={k.id}>
@@ -51,10 +49,10 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
                   />
                 </label>
                 <div className="tooltip-container">
-                  <label>
+                  <label className="tooltip-label">
                     <span className="my-h" onMouseOver={() => setActiveTooltip(k.id)} onMouseLeave={() => setActiveTooltip("")}>
-                      <QuestionIcon />
                       {k.label}
+                      <QuestionIcon />
                     </span>
                     <input
                       type="number"
@@ -66,7 +64,16 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
                 </div>
               </div>
             ))}
-            <p className="my-h">Выберите кол-во слоев, это 6 kэф как назвать:</p>
+            <div className="tooltip-container">
+              <label className="tooltip-label">
+                <span className="my-h" onMouseOver={() => setActiveTooltip("6kef")} onMouseLeave={() => setActiveTooltip("")}>
+                  <p className="my-h">Коэффициент капитальности: </p>
+                  <QuestionIcon />
+                </span>
+              </label>
+
+              {activeTooltip === "6kef" && <p className="tooltip">{kefDesc6}</p>}
+            </div>
             <div className="layer-container">
               {layersArr.map(layer => (
                 <div className="form_radio" key={layer.value}>

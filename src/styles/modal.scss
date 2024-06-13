@@ -13,19 +13,19 @@
   z-index: 1000;
   margin: 0 auto;
   height: 100vh;
+  overflow: scroll;
 }
 
 .modal-container {
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   position: absolute;
-  width: 1000px;
+  width: 800px;
   background: $modal-bg;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   flex-direction: column;
-  gap: 6px;
   border-radius: 40px;
   padding: 80px;
 }
@@ -40,6 +40,7 @@
 .label-container {
   padding: 20px;
   gap: 20px;
+  display: flex;
 }
 
 .layer-container {
@@ -47,4 +48,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .modal-container {
+    width: 300px;
+
+    .koeff-container {
+      flex-direction: column;
+    }
+  }
 }
