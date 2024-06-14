@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { MyModal } from "./MyModal"
-import { STRIP_COST, koeffsArr } from "./data"
+import { STRIP_COST, koeffsArr } from "./const/data"
 
 export const App = () => {
   const [plotLength, setPlotLength] = useState(0)

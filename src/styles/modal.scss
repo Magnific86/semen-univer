@@ -41,6 +41,8 @@
   padding: 20px;
   gap: 20px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .layer-container {
@@ -54,9 +56,18 @@
 @media screen and (max-width: 800px) {
   .modal-container {
     width: 300px;
+    gap: 10px;
 
     .koeff-container {
       flex-direction: column;
+      border: 1px solid $purple;
+      border-radius: 8px;
+      padding: 10px;
+      gap: 0;
+    }
+
+    .label-container {
+      padding: 6px;
     }
   }
 }

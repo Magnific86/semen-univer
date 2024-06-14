@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
-import { kefDesc6, koeffsArr, layersArr, layersData } from "./data"
+import { kefDesc6, koeffsArr, layersArr, layersData } from "./const/data"
 import useOnClickOutside from "./utils/useClickOutside"
-import { QuestionIcon } from "./utils/QuestionIcon"
+import { QuestionIcon } from "./components/icons/QuestionIcon"
 
 export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
   const [activeLayer, setActiveLayer] = useState(null)
@@ -54,10 +54,19 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
                       {k.label}
                       <QuestionIcon />
                     </span>
+                    <span className="limit-label">{"от " + k.min + " до " + k.max}</span>
                     <input
                       type="number"
                       value={kData[k.id].value}
-                      onChange={e => setK({ ...kData, [k.id]: { ...kData[k.id], value: e.target.value } })}
+                      onChange={e => {
+                        const value = e.target.value
+
+                        if (value <= k.max && value >= k.min) {
+                          setK({ ...kData, [k.id]: { ...kData[k.id], value } })
+                        } else {
+                          alert("Значения должны быть а рамках указанных")
+                        }
+                      }}
                     />
                   </label>
                   {activeTooltip === k.id && <p className="tooltip">{k.desc}</p>}

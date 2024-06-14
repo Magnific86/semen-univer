@@ -6,6 +6,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 input[type="number"] {
+  width: 250px;
   color: $purple;
   font-size: 18px;
   line-height: 1;
@@ -25,4 +26,23 @@ input[type="number"]:hover {
 input[type="number"]:focus {
   box-shadow: $purple 0px 2px 7px 4px;
   outline-offset: 1px;
+}
+
+.limit-label {
+  position: absolute;
+  color: $purple;
+  top: -7px;
+  left: 75px;
+  white-space: nowrap;
+  padding: 0 7px;
+  background: $modal-bg;
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  input[type="number"] {
+    width: 150px;
+    padding: 5px 7px;
+    font-size: 10px;
+  }
 }
