@@ -64,3 +64,9 @@ header {
     height: 35px;
   }
 }
+
+@media screen and(max-width: 800px) {
+  .my-h {
+    font-size: 12px;
+  }
+}
