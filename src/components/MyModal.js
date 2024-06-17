@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react"
-import { kefDesc6, koeffsArr, layersArr, layersData } from "./const/data"
-import useOnClickOutside from "./utils/useClickOutside"
-import { QuestionIcon } from "./components/icons/QuestionIcon"
+import { kefDesc6, koeffsArr, layersArr, layersData } from "../const/data"
+import useOnClickOutside from "../utils/useClickOutside"
+import { QuestionIcon } from "./icons/QuestionIcon"
+import { EditIcon } from "./icons/EditIcon"
 
 export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
   const [activeLayer, setActiveLayer] = useState(null)
@@ -26,7 +27,12 @@ export const MyModal = ({ setIsActive, isActive, kData, setK }) => {
 
   return (
     <>
-      <button onClick={() => setIsActive(true)}>Редактировать коэффициенты</button>
+      <button className="icon-container" onClick={() => setIsActive(true)}>
+        Редактировать коэффициенты
+        <div className="icon">
+          <EditIcon />
+        </div>
+      </button>
       {isActive && (
         <div className="modal-wrapper">
           <p className="my-h">Редактирование коэффициентов</p>

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
-import { MyModal } from "./MyModal"
 import { STRIP_COST, koeffsArr } from "./const/data"
+import { MyModal } from "./components/MyModal"
+import { CalculateIcon } from "./components/icons/CalculateIcon"
+import logo from "./assets/logo.png"
 
 export const App = () => {
   const [plotLength, setPlotLength] = useState(0)
@@ -54,6 +56,15 @@ export const App = () => {
 
   return (
     <div className="wrapper">
+      <header>
+        <div className="header-title">
+          <img src={logo} width={60} height={80} />
+          <h1 className="my-h">Разработано в МФ МГТУ им Н.Э. Баумана</h1>
+        </div>
+        <div className="header-desc">
+          <h1 className="my-h">Программа для расчёта стоимости строительства дорожного полотна</h1>
+        </div>
+      </header>
       <form onSubmit={e => submitHandler(e)}>
         <label>
           Длина участка:
@@ -66,7 +77,12 @@ export const App = () => {
         <label>
           <h1 className="my-h">Стоимость полосы: {STRIP_COST}</h1>
         </label>
-        <button>Посчитать</button>
+        <button className="icon-container">
+          Посчитать
+          <div className="icon">
+            <CalculateIcon />
+          </div>
+        </button>
       </form>
       {result ? <h1>Результат: {result} миллионов</h1> : null}
       <MyModal setK={setKoeffs} kData={koeffs} isActive={isActive} setIsActive={setIsActive} />

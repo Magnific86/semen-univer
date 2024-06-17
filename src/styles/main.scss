@@ -9,18 +9,58 @@
 body {
   color: #fff;
   background: $main-bg;
+  background-image: url("../assets/bg.jpg");
+  font-family: cursive;
+  font-weight: 700;
+}
+
+header {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+
+  .header-title {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header-desc {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
 
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin: 0 auto;
   gap: 70px;
-
-  flex-direction: column;
 }
 
 .my-h {
   font-size: 20px;
+}
+
+.icon-container {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  gap: 20px;
+
+  .icon {
+    display: flex;
+    width: 60px;
+    height: 35px;
+  }
 }
